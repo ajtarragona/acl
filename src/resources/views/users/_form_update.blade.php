@@ -2,13 +2,13 @@
     'method' => 'PUT', 
     'id'=>'user-form', 
     'action' => route('users.update', [$user->id]), 
-    'validator'=>'App/Http/Requests/Auth/UserValidate',
+    'validator'=>'Ajtarragona/ACL/Requests/UserValidate',
     //'validateonchange' => true //'confirm'=>'estàs seguro?'
 ])  
 
 
 
-	@include("auth.admin.users._form_fields")
+	@include("acl::users._form_fields")
 
 
 	@buttongroup

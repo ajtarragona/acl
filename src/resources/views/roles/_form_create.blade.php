@@ -2,13 +2,13 @@
         'method' => 'POST', 
         'id'=>'role-form', 
         'action' => route('roles.store'), 
-        'validator'=>'App/Http/Requests/Auth/NewRoleValidate',
+        'validator'=>'Ajtarragona/ACL/Requests/NewRoleValidate',
         //'validateonchange' => true //'confirm'=>'estàs seguro?'
     ])  
 
     
 
-    @include("auth.admin.roles._form_fields")
+    @include("acl::roles._form_fields")
     
     <hr/>
     

@@ -15,9 +15,8 @@
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("Home"), "url"=>route('home'), 'icon'=>'home'],
-          ['name'=>__("Authorization"), "url"=>route('auth.dashboard')],
-          ['name'=>__("Users")]
+          ['name'=>__("acl::auth.authorizations"), "url"=>route('acl.dashboard')],
+          ['name'=>__("acl::auth.users")]
       ]
 	 ])
 
@@ -25,7 +24,8 @@
 @endsection
 
 @section('body')
-  <div id="userfilters" class="collapse @if($userfilter->hasFilters()) show @endif">@include('auth.admin.users._filters')</div>
+<div class="pt-3">
+  <div id="userfilters" class="collapse @if($userfilter->hasFilters()) show @endif">@include('acl::users._filters')</div>
 
 
    <div class="table-responsive">
@@ -59,11 +59,6 @@
         @pagination(['collection'=>$users,'align'=>'center'])
   
       </div>
-      
+</div>      
 
-@endsection
-
-
-@section('css')
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @endsection

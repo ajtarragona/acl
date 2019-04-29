@@ -15,7 +15,7 @@
 		    'data' =>[
 		    	'target'=> '#ldap-search-results'
 		    ],
-		    'validator'=>'App/Http/Requests/Auth/LdapSearchValidate',
+		    'validator'=>'Ajtarragona/ACL/Requests/LdapSearchValidate',
 		])  
 			@row(['class'=>'gap-0'])
 					@col(['size'=>10])

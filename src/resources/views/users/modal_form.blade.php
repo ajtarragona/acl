@@ -8,8 +8,8 @@
 @section('body')
 	
 	@if($user->id)
-		@include('auth.admin.users._form_update')
+		@include('acl::users._form_update')
 	@else
-		@include('auth.admin.users._form_create')
+		@include('acl::users._form_create')
 	@endif
 @endsection

@@ -2,13 +2,13 @@
     'method' => 'PUT', 
     'id'=>'team-form', 
     'action' => route('teams.update', [$team->id]), 
-    'validator'=>'App/Http/Requests/Auth/TeamValidate',
+    'validator'=>'Ajtarragona/ACL/Requests/TeamValidate',
     //'validateonchange' => true //'confirm'=>'estàs seguro?'
 ])  
 
 
 
-	@include("auth.admin.teams._form_fields")
+	@include("acl::teams._form_fields")
 
 
 	@buttongroup

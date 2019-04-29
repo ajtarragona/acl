@@ -8,8 +8,8 @@
 @section('body')
 	
 	@if($team->id)
-		@include('auth.admin.teams._form_update')
+		@include('acl::teams._form_update')
 	@else
-		@include('auth.admin.teams._form_create')
+		@include('acl::teams._form_create')
 	@endif
 @endsection

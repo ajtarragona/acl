@@ -2,13 +2,13 @@
         'method' => 'POST', 
         'id'=>'permission-form', 
         'action' => route('permissions.store'), 
-        'validator'=>'App/Http/Requests/Auth/NewPermissionValidate',
+        'validator'=>'Ajtarragona/ACL/Requests/NewPermissionValidate',
         //'validateonchange' => true //'confirm'=>'estàs seguro?'
     ])  
 
     
 
-    @include("auth.admin.permissions._form_fields")
+    @include("acl::permissions._form_fields")
     
     <hr/>
     

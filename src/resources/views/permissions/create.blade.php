@@ -15,8 +15,7 @@
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("Home"), "url"=>route('home'), 'icon'=>'home'],
-          ['name'=>__("Authentication"), "url"=>route('auth.dashboard')],
+          ['name'=>__("Authentication"), "url"=>route('acl.dashboard')],
           ['name'=>__("Permissions"), "url"=>route('permissions.index')],
           ['name'=>__("New permission")])
     ]
@@ -26,20 +25,14 @@
 @endsection
 
 @section('body')
+<div class="pt-3">
     @row
         @col(['size'=>8])     
-            @include("auth.admin.permissions._form_create")
+            @include("acl::permissions._form_create")
 
 
         @endcol
     @endrow
-
+</div>
 @endsection
-
-        
-
-@section('css')
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-@endsection
-       
 

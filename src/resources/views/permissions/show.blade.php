@@ -22,8 +22,7 @@
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("Home"), "url"=>route('home'), 'icon'=>'home'],
-          ['name'=>__("Authorization"), "url"=>route('auth.dashboard')],
+          ['name'=>__("Authorization"), "url"=>route('acl.dashboard')],
           ['name'=>__("Permissions"), "url"=>route('permissions.index')],
           ['name'=>$permission->name]
       ]
@@ -33,15 +32,12 @@
 @endsection
 
 @section('body')
+   <div class="pt-3">
+
     @row
         @col(['size'=>8])      
-            @include("auth.admin.permissions._form_update")
+            @include("acl::permissions._form_update")
         @endcol
     @endrow
-
-@endsection
-
-
-@section('css')
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  </div>  
 @endsection

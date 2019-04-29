@@ -2,13 +2,13 @@
     'method' => 'PUT', 
     'id'=>'permission-form', 
     'action' => route('permissions.update', [$permission->id]), 
-    'validator'=>'App/Http/Requests/Auth/PermissionValidate',
+    'validator'=>'Ajtarragona/ACL/Requests/PermissionValidate',
     //'validateonchange' => true //'confirm'=>'estàs seguro?'
 ])  
 
 
 
-	@include("auth.admin.permissions._form_fields")
+	@include("acl::permissions._form_fields")
 
 
 	@buttongroup

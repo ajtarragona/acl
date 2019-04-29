@@ -2,13 +2,13 @@
     'method' => 'PUT', 
     'id'=>'role-form', 
     'action' => route('roles.update', [$role->id]), 
-    'validator'=>'App/Http/Requests/Auth/RoleValidate',
+    'validator'=>'Ajtarragona/ACL/Requests/RoleValidate',
     //'validateonchange' => true //'confirm'=>'estàs seguro?'
 ])  
 
 
 
-	@include("auth.admin.roles._form_fields")
+	@include("acl::roles._form_fields")
 
 
 	@buttongroup

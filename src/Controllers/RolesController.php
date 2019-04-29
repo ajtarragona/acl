@@ -23,7 +23,7 @@ class RolesController extends Controller
             'roles' => $roles,
         ];
 
-        return $this->view('auth.admin.roles.list')->with($params);
+        return $this->view('roles.list')->with($params);
     }
 
     // Create role Page
@@ -36,7 +36,7 @@ class RolesController extends Controller
             'permissions' => $permissions
         ];
 
-        return $this->view('auth.admin.roles.create')->with($params);
+        return $this->view('roles.create')->with($params);
     }
 
     // Create User Page
@@ -52,7 +52,7 @@ class RolesController extends Controller
             'permissions' => $permissions
         ];
 
-        return $this->view('auth.admin.roles.modal_form')->with($params);
+        return $this->view('roles.modal_form')->with($params);
     }
 
     // Store New User
@@ -84,7 +84,7 @@ class RolesController extends Controller
             ];
             ///dd($params);
 
-            return $this->view('auth.admin.roles.show')->with($params);
+            return $this->view('roles.show')->with($params);
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return $this->view('errors.' . '404');

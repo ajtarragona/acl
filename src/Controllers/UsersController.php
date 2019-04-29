@@ -39,7 +39,7 @@ class UsersController extends Controller
             'roles' => $roles,
         ];
 
-        return $this->view('auth.admin.users.list')->with($params);
+        return $this->view('users.list')->with($params);
     }
 
     // Create User Page
@@ -54,7 +54,7 @@ class UsersController extends Controller
             'permissions' => $permissions
         ];
 
-        return $this->view('auth.admin.users.create')->with($params);
+        return $this->view('users.create')->with($params);
     }
 
     // Create User Page
@@ -72,7 +72,7 @@ class UsersController extends Controller
             'permissions' => $permissions
         ];
 
-        return $this->view('auth.admin.users.modal_form')->with($params);
+        return $this->view('users.modal_form')->with($params);
     }
 
     // Store New User
@@ -112,7 +112,7 @@ class UsersController extends Controller
             ];
             ///dd($params);
 
-            return $this->view('auth.admin.users.show')->with($params);
+            return $this->view('users.show')->with($params);
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return $this->view('errors.' . '404');
@@ -177,7 +177,7 @@ class UsersController extends Controller
          $roles = Role::getAllCombo();
          $teams=Team::getAllCombo();
 
-         return $this->view('auth.admin.users.modal_addrole',compact('user','roles','teams'));
+         return $this->view('users.modal_addrole',compact('user','roles','teams'));
     }
 
 
@@ -226,7 +226,7 @@ class UsersController extends Controller
 
 
     public function ldapmodalform(){
-        return $this->view('auth.admin.users.modal_ldapform');
+        return $this->view('users.modal_ldapform');
     }
 
     private function ldapsearch($filter){
@@ -257,7 +257,7 @@ class UsersController extends Controller
          $filter=$request->ldap_filter;
          $users = $this->ldapsearch($filter);
 
-        return $this->view('auth.admin.users._ldapsearch',compact('users'));
+        return $this->view('users._ldapsearch',compact('users'));
         
 
     }

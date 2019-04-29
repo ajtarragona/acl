@@ -15,8 +15,7 @@
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("Home"), "url"=>route('home'), 'icon'=>'home'],
-          ['name'=>__("Authentication"), "url"=>route('auth.dashboard')],
+          ['name'=>__("Authentication"), "url"=>route('acl.dashboard')],
           ['name'=>__("Permissions"), "url"=>route('teams.index')],
           ['name'=>__("New team")],
       ]
@@ -26,20 +25,15 @@
 @endsection
 
 @section('body')
+  <div class="pt-3">
+
     @row
         @col(['size'=>8])     
-            @include("auth.admin.teams._form_create")
+            @include("acl::teams._form_create")
 
 
         @endcol
     @endrow
-
-@endsection
-
-        
-       
-
-
-@section('css')
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  </div>
+  
 @endsection

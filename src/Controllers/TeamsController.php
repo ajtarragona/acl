@@ -23,7 +23,7 @@ class TeamsController extends Controller
             'teams' => $teams,
         ];
 
-        return $this->view('auth.admin.teams.list')->with($params);
+        return $this->view('teams.list')->with($params);
     }
 
     // Create Page
@@ -34,7 +34,7 @@ class TeamsController extends Controller
             'team' => new Team()
         ];
 
-        return $this->view('auth.admin.teams.create')->with($params);
+        return $this->view('teams.create')->with($params);
     }
 
     // Create Page modal
@@ -48,7 +48,7 @@ class TeamsController extends Controller
             'team' => $team
         ];
 
-        return $this->view('auth.admin.teams.modal_form')->with($params);
+        return $this->view('teams.modal_form')->with($params);
     }
 
     // Store New
@@ -75,7 +75,7 @@ class TeamsController extends Controller
             $params = [
                 'team' => $team
             ];
-            return $this->view('auth.admin.teams.show')->with($params);
+            return $this->view('teams.show')->with($params);
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return $this->view('errors.' . '404');

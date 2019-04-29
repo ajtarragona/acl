@@ -2,13 +2,13 @@
         'method' => 'POST', 
         'id'=>'team-form', 
         'action' => route('teams.store'), 
-        'validator'=>'App/Http/Requests/Auth/NewTeamValidate',
+        'validator'=>'Ajtarragona/ACL/Requests/NewTeamValidate',
         //'validateonchange' => true //'confirm'=>'estàs seguro?'
     ])  
 
     
 
-    @include("auth.admin.teams._form_fields")
+    @include("acl::teams._form_fields")
     
     <hr/>
     

@@ -4,7 +4,6 @@ namespace Ajtarragona\ACL\Models;
 
 use Laratrust\Models\LaratrustTeam;
 use Kyslik\ColumnSortable\Sortable;
-use App\Models\Census;
 
 class Team extends LaratrustTeam
 {
@@ -29,10 +28,7 @@ class Team extends LaratrustTeam
     }
 
 
-   public function censuses()
-   {
-      return $this->belongsToMany(Census::class);
-   } 
+  
 
 
    public function roles()

@@ -15,8 +15,7 @@
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("Home"), "url"=>route('home'), 'icon'=>'home'],
-          ['name'=>__("Authentication"), "url"=>route('auth.dashboard')],
+          ['name'=>__("Authentication"), "url"=>route('acl.dashboard')],
           ['name'=>__("Roles"), "url"=>route('roles.index')],
           ['name'=>__("New role")],
       ]
@@ -26,19 +25,13 @@
 @endsection
 
 @section('body')
-    @row
+ <div class="pt-3">
+   @row
         @col(['size'=>8])     
-            @include("auth.admin.roles._form_create")
+            @include("acl::roles._form_create")
 
 
         @endcol
     @endrow
-
-@endsection
-
-        
-       
-
-@section('css')
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</div>
 @endsection

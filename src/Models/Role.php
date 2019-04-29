@@ -4,7 +4,7 @@ namespace Ajtarragona\ACL\Models;
 
 use Laratrust\Models\LaratrustRole;
 use Kyslik\ColumnSortable\Sortable;
-use App\Models\Auth\Team;
+use Ajtarragona\ACL\Models\Team;
 
 class Role extends LaratrustRole
 {

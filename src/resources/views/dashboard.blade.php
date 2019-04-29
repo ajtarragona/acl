@@ -1,4 +1,5 @@
 @extends('ajtarragona-web-components::layout/master-sidebar') 
+
 @section('title')
   @lang('Auth dashboard')
 @endsection
@@ -7,19 +8,18 @@
 @section('breadcrumb')
     @breadcrumb([
       "items"=>[
-        ['name'=>__("Home"),"url"=>route('home'),'icon'=>'home'],
-        ['name'=>__("Authorization")]
+        ['name'=>__("acl::auth.authorizations")]
       ]
     ])
   
 @endsection
 
 @section('body')
-
+<div class="pt-3">
    
       @row
         @col(['size'=>3])
-            @card(['title'=> icon('users'). ' '.$n_users." ".__("Users")])
+            @card(['title'=> icon('users'). ' '.$n_users." ".__("acl::auth.users")])
               @slot('footer')
                 <a class="btn btn-sm btn-light" href="{{ route('users.index')}}"> @lang("View all") </a>
                 <a class="btn btn-sm btn-light tgn-modal-opener"  data-size="large" data-draggable='true' href="{{ route('users.usermodal')}}">@icon("plus")  @lang("New user") </a>
@@ -81,10 +81,6 @@
       @endrow
            
 
-
+</div>
      
-@endsection
-
-@section('css')
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @endsection

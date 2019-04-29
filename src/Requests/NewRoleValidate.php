@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace Ajtarragona\ACL\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\BaseRequest;
+use Ajtarragona\WebComponents\Requests\BaseRequest;
 
 class NewRoleValidate extends BaseRequest
 {

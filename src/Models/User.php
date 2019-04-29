@@ -6,10 +6,8 @@ namespace Ajtarragona\ACL\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
-use App\Models\SortableModel;
-use App\Models\Auth\Role;
+use Ajtarragona\ACL\Models\Role;
 use Kyslik\ColumnSortable\Sortable;
-use App\Http\Requests\Auth\UserValidate;
 use Laravel\Passport\HasApiTokens;
 
 
@@ -57,6 +55,17 @@ class User extends Authenticatable
         //dd($roles->pluck('id'));
         foreach($roles as $role){
             $ret[] = $role->id;
+        }
+        return $ret;
+
+    }
+
+    public function roleNames(){
+        $ret=collect();
+        $roles=$this->roles;
+        //dd($roles->pluck('id'));
+        foreach($roles as $role){
+            $ret->push($role->roleName());
         }
         return $ret;
 

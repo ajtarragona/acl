@@ -17,7 +17,11 @@ class ACLServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/resources/views', 'acl');
         
         $this->loadRoutesFrom(__DIR__.'/routes.php');
-        
+
+         //idiomas
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'acl');
+
+
         $this->bootConfig();
 
 

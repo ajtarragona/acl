@@ -8,8 +8,8 @@
 @section('body')
 	
 	@if($permission->id)
-		@include('auth.admin.permissions._form_update')
+		@include('acl::permissions._form_update')
 	@else
-		@include('auth.admin.permissions._form_create')
+		@include('acl::permissions._form_create')
 	@endif
 @endsection
