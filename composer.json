@@ -1,0 +1,30 @@
+{
+    "name": "ajtarragona/acl",
+    "keywords" : ["laravel5","laravel","acl","access","control", "list"],
+    "license": "MIT",
+    "description": "ACL Package for access control",
+    "authors": [
+        {
+            "name": "Txomin Medrano",
+            "email": "tmedrano@tarragona.cat"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php" : ">=7.0.0",
+        "santigarcor/laratrust": "5.0.*"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Ajtarragona\\ACL\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ajtarragona\\ACL\\ACLServiceProvider"
+            ]
+        }
+    }
+}
