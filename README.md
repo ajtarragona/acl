@@ -3,55 +3,76 @@
 Aquest paquet incorpora una capa de Control d'Accés (Acces Control List) que permet definir, usuaris, rols, permisos i grups. 
 Utilitza internament el paquet [laratrust](https://laratrust.santigarcor.me/).
 
+També s'inropora un backend d'administració d'aquesta capa ACL. Aquest backend depèn del paquet [ajtarragona/web-components](https://github.com/ajtarragona/web-components) per funcionar correctament.
 
-## acl
+## Instal·lació
+```bash
+composer require ajtarragona/acl
+```
 
-TODO
-php artisan vendor:publish --tag="laratrust"
 
-configure config/auth.php
-'providers' => [
+## Configuració Inicial
+
+A l'arxiu `config/auth.php` definim la classe del package al user provider:
+```php
+    'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => Ajtarragona\ACL\Models\User::class,
         ],
+    ]
+```
 
+Publiquem la configuració de Laratrust.
+```bash
+php artisan vendor:publish --tag="laratrust"
+```
 
-configure config/laratrust.php
+A l'arxiu `config/laratrust.php`, posem l'atribut use_teams a true:
+```php
+ ...
  'use_teams' => true,
+ ...
+```
+
+Definim els models:
+ ```php
  'user_models' => [
  	'users' => 'Ajtarragona\ACL\Models\User',
- ]
-
+ ],
+ ...
  'models' => [
-        /**
-         * Role model
-         */
-        'role' => 'Ajtarragona\ACL\Models\Role',
+    /**
+     * Role model
+     */
+    'role' => 'Ajtarragona\ACL\Models\Role',
 
-        /**
-         * Permission model
-         */
-        'permission' => 'Ajtarragona\ACL\Models\Permission',
+    /**
+     * Permission model
+     */
+    'permission' => 'Ajtarragona\ACL\Models\Permission',
 
-        /**
-         * Team model
-         */
-        'team' => 'Ajtarragona\ACL\Models\Team',
+    /**
+     * Team model
+     */
+    'team' => 'Ajtarragona\ACL\Models\Team',
 
-    ],
+ ],
+```
 
-
-Executar comanda:
+Finalment, executem la següent comanda:
+```bash
 php artisan ajtarragona:acl-setup
-Això prepara les taules de laratrust
-executa la migració
-i crea els rols, permisos i usuaris per defecte
-Pots modificar els rols, permisos i usuaris a l'arxiu config/acl_seed.php
+```
+
+Això prepararà les taules de la base de dades, si no existeixen, executarà la migració i crearà els permisos, rols i usuaris per defecte.
+
+> Es poden modificar els rols, permisos i usuaris per defecte a l'arxiu `config/acl_seed.php`, publicant prèviament la configuració del paquet:
+```bash
 php artisan vendor:publish --tag=ajtarragona-acl
+```
 
-
-Configurar LDAP
+## Configurar LDAP
 
 Add guard to config/auth.php
 'guards' => [
