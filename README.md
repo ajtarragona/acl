@@ -140,3 +140,9 @@ ADLDAP_ADMIN_PASSWORD = ?
 ADLDAP_USE_SSL = ?
 ADLDAP_USE_TLS = ?
 ```
+
+
+
+## Backend
+Podem accedir al backend d'administració a través de la ruta `ajtarragona/acl`.
+Caldrà que introduim un usuari vàlid que tingui el permís de gestió d'autoritzacions.
