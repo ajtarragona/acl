@@ -1,7 +1,7 @@
 # Tarragona ACL for Laravel
 
 Aquest paquet incorpora una capa de Control d'Accés (Acces Control List) que permet definir, usuaris, rols, permisos i grups. 
-Utilitza internament el paquet [laratrust](https://laratrust.santigarcor.me/).
+Utilitza internament el paquet [Laratrust](https://laratrust.santigarcor.me/).
 
 També s'inropora un backend d'administració d'aquesta capa ACL. Aquest backend depèn del paquet [ajtarragona/web-components](https://github.com/ajtarragona/web-components) per funcionar correctament.
 
@@ -154,3 +154,38 @@ ADLDAP_USE_TLS = ?
 ## Backend
 Podem accedir al backend d'administració a través de la ruta `ajtarragona/acl`.
 Caldrà que introduim un usuari vàlid que tingui el permís de gestió d'autoritzacions.
+
+
+
+## Ús
+Mirar la documentació de [Laratrust](https://laratrust.santigarcor.me/) per a més informació.
+
+Però a grans trets per comprovar si un usuari té un determinat rol o permís, ho podem fer a través d'un middleware a les rutes:
+```php
+Route::group(['middleware' => ['role:admin']], function() { 
+    ... 
+});
+```
+
+```php
+Route::group(['middleware' => ['permission:edit-post']], function() { 
+    ... 
+});
+```
+
+
+O bé amb directives blade a les vistes:
+```php
+@role('admin')
+    <p>This is visible to users with the admin role. Gets translated to
+    \Laratrust::hasRole('admin')</p>
+@endrole
+```
+
+```php
+@permission('manage-admins')
+    <p>This is visible to users with the given permissions. Gets translated to
+    \Laratrust::can('manage-admins'). The @can directive is already taken by core
+    laravel authorization package, hence the @permission directive instead.</p>
+@endpermission
+```
