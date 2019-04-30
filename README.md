@@ -160,7 +160,7 @@ Caldrà que introduim un usuari vàlid que tingui el permís de gestió d'autori
 ## Ús
 Mirar la documentació de [Laratrust](https://laratrust.santigarcor.me/) per a més informació.
 
-Però a grans trets per comprovar si un usuari té un determinat rol o permís, ho podem fer a través d'un middleware a les rutes:
+A grans trets per comprovar si un usuari té un determinat rol o permís, ho podem fer a través d'un middleware a les rutes:
 ```php
 Route::group(['middleware' => ['role:admin']], function() { 
     ... 
