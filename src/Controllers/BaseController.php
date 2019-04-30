@@ -40,8 +40,23 @@ class BaseController extends Controller
 	}
 	
 	public function view($view, $args=[]){
-		return view("acl::".$view, $args);
+        if(!str_contains($view,"::")) $view="acl::".$view;
+
+		return view($view, $args);
 	}
+
+
+    public function denied()
+     {
+       
+       $error=to_object([
+        "code" =>403,
+        "title"=> __("acl::auth.Permission denied"),
+        "message" => __("acl::auth.Access denied to selected resource"),
+       ]);
+
+       return view("ajtarragona-web-components::layout.error",compact('error'));
+    }
 
 	
 }

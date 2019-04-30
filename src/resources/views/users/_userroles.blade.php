@@ -2,8 +2,8 @@
 	<table class="table table-sm">
 		<thead>
 			<tr>
-				<th>@lang("Role")</th>
-				<th>@lang("Group")</th>
+				<th>@lang("acl::auth.Role")</th>
+				<th>@lang("acl::auth.Team")</th>
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
@@ -16,7 +16,8 @@
 							@form([
 							    'method' => 'DELETE', 
 							    'id'=>'remove-role-form-'.$role->id, 
-							    'action' => route('users.removerole', [$user->id]), 
+							    'action' => route('users.removerole', [$user->id]),
+							    'confirm'=>__("acl::auth.Role will be removed from user.<br/>Are you sure?") 
 							])  
 								<input type="hidden" name="role_id" value="{{$role->id}}"/>
 								<input type="hidden" name="team_id" value="{{$role->pivot->team_id}}"/>
@@ -28,6 +29,9 @@
 			@endforeach
 		</tbody>
 	</table>
-	<a class="btn btn-xs btn-light tgn-modal-opener" href="{{ route('users.addrolemodal',[$user->id])}}">@icon('plus') @lang("New role")</a>
+	@modalopener(['href'=>route('users.addrolemodal',[$user->id]),'class'=>'btn btn-sm btn-light '])
+		@icon('plus') @lang("acl::auth.New role")
+	@endmodalopener
+	
 @endif
 

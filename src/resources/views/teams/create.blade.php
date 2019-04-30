@@ -1,12 +1,12 @@
 @extends('ajtarragona-web-components::layout/master-sidebar') 
 
-@section('title', __("New team")) 
+@section('title', __("acl::auth.New team")) 
 
 
 @section('actions')
     @buttongroup
         <label for="team-form-submit-btn" role="button" class="btn btn-primary btn-sm" tabindex="0">
-          @icon('save') @lang('Save')
+          @icon('save') @lang('tgn::strings.save')
         </label>
     @endbuttongroup
 
@@ -15,9 +15,9 @@
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("Authentication"), "url"=>route('acl.dashboard')],
-          ['name'=>__("Permissions"), "url"=>route('teams.index')],
-          ['name'=>__("New team")],
+          ['name'=>__("acl::auth.Auth admin"), "url"=>route('acl.dashboard')],
+          ['name'=>__("acl::auth.Permissions"), "url"=>route('teams.index')],
+          ['name'=>__("acl::auth.New team")],
       ]
 	 ])
 

@@ -1,15 +1,15 @@
 @extends('ajtarragona-web-components::layout/master-sidebar') 
 
 
-@section('title', __('Users'))
+@section('title', __('acl::auth.Users'))
 
 
 @section('actions')
- <button class="btn @if($userfilter->hasFilters()) btn-outline-dark @else btn-light @endif btn-sm" type="button" data-toggle="collapse" data-target="#userfilters" aria-expanded="false" aria-controls="userfilters">@icon('filter') @lang("Filters")</button>
+ <button class="btn @if($userfilter->hasFilters()) btn-outline-dark @else btn-light @endif btn-sm" type="button" data-toggle="collapse" data-target="#userfilters" aria-expanded="false" aria-controls="userfilters">@icon('filter') @lang("acl::auth.Filters")</button>
 
-<a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.usermodal')}}">@icon("plus")  @lang("New user") </a>
+<a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.usermodal')}}">@icon("plus")  @lang("acl::auth.New user") </a>
 
-<a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.ldapmodalform')}}">@icon("plus")  @lang("auth.addfromldap") </a>
+<a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.ldapmodalform')}}">@icon("plus")  @lang("acl::auth.addfromldap") </a>
 @endsection
 
 @section('breadcrumb')
@@ -32,11 +32,11 @@
         <table class="table  table-response">
           <thead>
             <tr>
-              <th>@sortablelink('id',__('ID'))</th>
-              <th>@sortablelink('name',__('Name'))</th>
-              <th>@sortablelink('username',__('Username'))</th>
-              <th>@sortablelink('email',__('Email'))</th>
-              <th>Role/s</th>
+              <th>@sortablelink('id',__('acl::auth.ID'))</th>
+              <th>@sortablelink('name',__('acl::auth.Name'))</th>
+              <th>@sortablelink('username',__('acl::auth.Username'))</th>
+              <th>@sortablelink('email',__('acl::auth.Email'))</th>
+              <th>@lang("acl::auth.Roles")</th>
             </tr>
           </thead>
           <tbody>

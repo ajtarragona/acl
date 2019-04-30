@@ -87,7 +87,7 @@ class UsersController extends Controller
 
         $user->attachRoleIds($request->input('role_id'));
 
-        return redirect()->route('users.index')->with('success', "The user <strong>$user->name</strong> has successfully been created.");
+        return redirect()->route('users.index')->with('success', __("acl::auth.User <strong>:name</strong> has successfully been created.",['name'=>$user->name]));
     }
 
     // Delete Confirmation Page
@@ -113,9 +113,9 @@ class UsersController extends Controller
             ///dd($params);
 
             return $this->view('users.show')->with($params);
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+        } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -137,10 +137,10 @@ class UsersController extends Controller
             //$permission = Permission::find($request->input('permission_id'));
             //$user->attachPermission($permission);
 
-            return redirect()->route('users.show',[$user->id])->with('success', "The user <strong>$user->name</strong> has successfully been updated.");
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+            return redirect()->route('users.show',[$user->id])->with('success', __("acl::auth.User <strong>:name</strong> has successfully been updated.",['name'=>$user->username]));
+        } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -150,12 +150,13 @@ class UsersController extends Controller
     {
          //borra la categoria
         try{
+            $username=$user->username;
             $user->detachAllRoles();
             $user->delete();
 
-            return redirect()->route('users.index')->with(['success'=>"The user <strong>$user->name</strong> has successfully been deleted"]); 
+            return redirect()->route('users.index')->with(['success'=>__("acl::auth.User <strong>:name</strong> has successfully been deleted.",['name'=>$username])]); 
          }catch(Exception $e){
-             return redirect()->route('users.index')->with(['error'=>'Error borrando usuario']); 
+             return redirect()->route('users.index')->with(['error'=>__('acl::auth.Error deleting user.')]); 
         }
     }
 
@@ -197,10 +198,10 @@ class UsersController extends Controller
                 $user->attachRole($role); 
             }
 
-            return redirect()->route('users.show',[$user_id])->with(['success'=>"Role added successfully "]); 
+            return redirect()->route('users.show',[$user_id])->with(['success'=>__("acl::auth.Role <strong>:name</strong> added successfully.",["name"=>$role->name]) ]); 
             
         }catch(Exception $e){
-             return redirect()->route('users.show',[$user_id])->with(['error'=>'Error adding role']); 
+             return redirect()->route('users.show',[$user_id])->with(['error'=>__('acl::auth.Error adding role.')]); 
         }
         //dd($request->all());
     }
@@ -218,9 +219,9 @@ class UsersController extends Controller
                  $user->detachRole($role);
             }
            
-            return redirect()->route('users.show',[$user_id])->with(['success'=>"Role removed successfully "]); 
+            return redirect()->route('users.show',[$user_id])->with(['success'=>__("acl::auth.Role <strong>:name</strong> removed successfully.",["name"=>$role->name]) ]); 
         }catch(Exception $e){
-             return redirect()->route('users.show',[$user_id])->with(['error'=>'Error removing role']); 
+             return redirect()->route('users.show',[$user_id])->with(['error'=>__('acl::auth.Error removing role.')]); 
         }
     }
 
@@ -279,12 +280,12 @@ class UsersController extends Controller
                 }
                 DB::commit();
 
-                return redirect()->route('users.index')->with('success', __("auth.ldapusersadded"));
+                return redirect()->route('users.index')->with('success', __("acl::auth.ldapusersadded"));
             }
             return redirect()->route('users.index');
        }catch(Exception $e){
            DB::rollBack();
-           return redirect()->route('users.index')->with(['error'=>__("auth.ldapusersadderror")]); 
+           return redirect()->route('users.index')->with(['error'=>__("acl::auth.ldapusersadderror")]); 
        }
     }
 }

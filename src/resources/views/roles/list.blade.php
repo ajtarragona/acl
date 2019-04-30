@@ -1,18 +1,18 @@
 @extends('ajtarragona-web-components::layout/master-sidebar') 
 
 
-@section('title', __('Roles'))
+@section('title', __('acl::auth.Roles'))
 
 
 @section('actions')
- <a class="btn btn-sm btn-light tgn-modal-opener"  data-size='large' data-draggable='true' href="{{ route('roles.rolemodal')}}">@icon("plus")  @lang("New role") </a>
+ <a class="btn btn-sm btn-light tgn-modal-opener"  data-size='large' data-draggable='true' href="{{ route('roles.rolemodal')}}">@icon("plus")  @lang("acl::auth.New role") </a>
 @endsection
 
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("Authorization"), "url"=>route('acl.dashboard')],
-          ['name'=>__("Roles")],
+          ['name'=>__("acl::auth.Auth admin"), "url"=>route('acl.dashboard')],
+          ['name'=>__("acl::auth.Roles")],
       ]
 	 ])
 
@@ -28,11 +28,11 @@
           <table class="table  table-response">
             <thead>
               <tr>
-                <th>@sortablelink('id',__('ID'))</th>
-                <th>@sortablelink('name',__('Name'))</th>
-                <th>@sortablelink('display_name',__('Display name'))</th>
-                <th>@sortablelink('description',__('Description'))</th>
-                <th>@lang('Permissions')</th>
+                <th>@sortablelink('id',__('acl::auth.ID'))</th>
+                <th>@sortablelink('name',__('acl::auth.Name'))</th>
+                <th>@sortablelink('display_name',__('acl::auth.Display name'))</th>
+                <th>@sortablelink('description',__('acl::auth.Description'))</th>
+                <th>@lang('acl::auth.Permissions')</th>
               </tr>
             </thead>
             <tbody>

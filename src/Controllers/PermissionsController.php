@@ -58,7 +58,7 @@ class PermissionsController extends Controller
             
         $permission = Permission::create($request->all());
         
-        return redirect()->route('permissions.index')->with('success', "The permission <strong>$permission->name</strong> has successfully been created.");
+        return redirect()->route('permissions.index')->with('success', __("acl::auth.Permission <strong>:name</strong> has successfully been created.",['name'=>$permission->name]));
     }
 
     public function show(Permission $permission)
@@ -76,9 +76,9 @@ class PermissionsController extends Controller
                 'permission' => $permission
             ];
             return $this->view('permissions.show')->with($params);
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+        } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -93,10 +93,10 @@ class PermissionsController extends Controller
             
             
 
-            return redirect()->route('permissions.show',[$permission->id])->with('success', "The permission <strong>$permission->name</strong> has successfully been updated.");
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+            return redirect()->route('permissions.show',[$permission->id])->with('success', __("acl::auth.Permission <strong>:name</strong> has successfully been updated.",['name'=>$permission->name]));
+         } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -105,11 +105,12 @@ class PermissionsController extends Controller
     public function destroy(Permission $permission)
     {
         try{
+            $permissionname=$permission->name;
             $permission->delete();
 
-            return redirect()->route('permissions.index')->with(['success'=>"The permission <strong>$permission->name</strong> has successfully been deleted"]); 
+            return redirect()->route('permissions.index')->with(['success'=>__("acl::auth.Permission <strong>:name</strong> has successfully been deleted.",['name'=>$permissionname])]); 
          }catch(Exception $e){
-             return redirect()->route('permissions.index')->with(['error'=>'Error borrando permission']); 
+             return redirect()->route('permissions.index')->with(['error'=>__('acl::auth.Error deleting permission.')]); 
         }
     }
 }

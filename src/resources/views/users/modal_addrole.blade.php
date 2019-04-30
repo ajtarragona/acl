@@ -2,9 +2,12 @@
 
 @section('id','modal-user')
 
-@section('title', __('Add role to user') )
+@section('title', __('acl::auth.Add role to user') )
 
 
+@section('footer')
+<label for="add-role-btn" class="btn btn-sm btn-primary" role="button" tabindex="0"> @icon('plus') @lang('acl::auth.Add role') </label>
+@endsection
 @section('body')
 	
 	@form([
@@ -36,9 +39,9 @@
     		'data'=>['width'=>'100%']
     	]) 
 
-	<hr/>
+	
 
-        @button(['id'=>'add-role-btn', 'type'=>'submit','value'=>'submit','name'=>'submitaction','style'=>'secondary','size'=>'sm'])  @icon('plus') @lang('Add role') 
+        @button(['hidden'=>true,'id'=>'add-role-btn', 'type'=>'submit','value'=>'submit','name'=>'submitaction','style'=>'secondary','size'=>'sm'])  @icon('plus') @lang('Add role') 
         @endbutton
         
 	@endform

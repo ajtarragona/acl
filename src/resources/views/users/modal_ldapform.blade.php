@@ -2,7 +2,7 @@
 
 @section('id','modal-ldap')
 
-@section('title', __('auth.searchldapusers') )
+@section('title', __('acl::auth.searchldapusers') )
 
 
 @section('body')
@@ -24,7 +24,7 @@
 					@endcol
 
 					@col(['size'=>2])
-				        @button(['id'=>'search-ldap-btn', 'class'=>'btn-block', 'type'=>'submit','value'=>'submit','name'=>'submitaction','style'=>'light','size'=>'sm'])  @icon('search') @lang('auth.search') 
+				        @button(['id'=>'search-ldap-btn', 'class'=>'btn-block', 'type'=>'submit','value'=>'submit','name'=>'submitaction','style'=>'light','size'=>'sm'])  @icon('search') @lang('acl::auth.Search') 
 				        @endbutton
 				    @endcol
 			@endrow

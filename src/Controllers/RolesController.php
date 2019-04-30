@@ -63,7 +63,7 @@ class RolesController extends Controller
         $role = Role::create($request->all());
         $role->attachPermissionIds($request->input('permission_id'));
 
-        return redirect()->route('roles.index')->with('success', "The role <strong>$role->name</strong> has successfully been created.");
+        return redirect()->route('roles.index')->with('success', __("acl::auth.Role <strong>:name</strong> has successfully been created.",['name'=>$role->name]));
     }
 
     // Delete Confirmation Page
@@ -85,9 +85,9 @@ class RolesController extends Controller
             ///dd($params);
 
             return $this->view('roles.show')->with($params);
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+         } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -106,10 +106,10 @@ class RolesController extends Controller
 
             
 
-            return redirect()->route('roles.show',[$role->id])->with('success', "The role <strong>$role->name</strong> has successfully been updated.");
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+            return redirect()->route('roles.show',[$role->id])->with('success', __("acl::auth.Role <strong>:name</strong> has successfully been updated.",['name'=>$role->name]));
+         } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -119,11 +119,12 @@ class RolesController extends Controller
     {
         try{
             //$user->detachAllRoles();
+            $rolename=$role->name;
             $role->delete();
 
-            return redirect()->route('roles.index')->with(['success'=>"The role <strong>$role->name</strong> has successfully been deleted"]); 
+            return redirect()->route('roles.index')->with(['success'=>__("acl::auth.Role <strong>:name</strong> has successfully been deleted.",['name'=>$rolename])]); 
          }catch(Exception $e){
-             return redirect()->route('roles.index')->with(['error'=>'Error borrando rol']); 
+             return redirect()->route('roles.index')->with(['error'=>__('acl::auth.Error deleting role.')]); 
         }
     }
 }

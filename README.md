@@ -1,4 +1,4 @@
-# Tarragona ACL Laravel 5.5
+# Tarragona ACL for Laravel
 
 
 
@@ -39,6 +39,14 @@ configure config/laratrust.php
         'team' => 'Ajtarragona\ACL\Models\Team',
 
     ],
-php artisan laratrust:setup
-php artisan migrate
 
+
+Executar comanda:
+php artisan ajtarragona:acl-setup
+Això prepara les taules de laratrust
+executa la migració
+i crea els rols, permisos i usuaris per defecte
+
+
+
+Configurar LDAP

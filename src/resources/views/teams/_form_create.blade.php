@@ -10,10 +10,9 @@
 
     @include("acl::teams._form_fields")
     
-    <hr/>
     
     @buttongroup
-        @button(['id'=>'team-form-submit-btn', 'hidden'=>false, 'type'=>'submit','value'=>'submit','name'=>'submitaction'])  @icon('save') @lang('Save') 
+        @button(['id'=>'team-form-submit-btn', 'hidden'=>true, 'type'=>'submit','value'=>'submit','name'=>'submitaction'])  @icon('save') @lang('tgn::strings.save') 
         @endbutton
         
         

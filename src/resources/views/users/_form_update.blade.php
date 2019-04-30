@@ -12,7 +12,7 @@
 
 
 	@buttongroup
-	    @button(['id'=>'user-form-submit-btn', 'hidden'=>true, 'type'=>'submit','value'=>'submit','name'=>'submitaction'])  @icon('save') @lang('Save') 
+	    @button(['id'=>'user-form-submit-btn', 'hidden'=>true, 'type'=>'submit','value'=>'submit','name'=>'submitaction'])  @icon('save') @lang('tgn::strings.save') 
 	    @endbutton
 	    
 	    

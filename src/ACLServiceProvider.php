@@ -3,6 +3,7 @@
 namespace Ajtarragona\ACL;
 
 use Illuminate\Support\ServiceProvider;
+use Ajtarragona\ACL\Commands\SetupAcl;
 
 class ACLServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,8 @@ class ACLServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->bootConfig();
+
         //vistas
         $this->loadViewsFrom(__DIR__.'/resources/views', 'acl');
         
@@ -21,8 +24,7 @@ class ACLServiceProvider extends ServiceProvider
          //idiomas
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'acl');
 
-
-        $this->bootConfig();
+        $this->registerCommands();
 
 
     }
@@ -34,14 +36,17 @@ class ACLServiceProvider extends ServiceProvider
      */
     protected function bootConfig()
     {   
-        $path = __DIR__.'/Config/acl.php';
+        $base = __DIR__.'/Config/';
+        $publish=[];
+
+        foreach(['acl','acl_seed'] as $name){
+            $path = $base.$name.'.php';
+            $this->mergeConfigFrom($path, $name);
+            $publish[$path]=config_path($name.'.php');
+        }
+               
+        $this->publishes($publish,'ajtarragona-acl');
        
-        $this->mergeConfigFrom($path, 'acl');
-        
-        $this->publishes([
-            $path => config_path('acl.php')
-        ],'ajtarragona-acl');
-        
     }
 
 
@@ -57,6 +62,16 @@ class ACLServiceProvider extends ServiceProvider
         //helpers
         foreach (glob(__DIR__.'/Helpers/*.php') as $filename){
             require_once($filename);
+        }
+    }
+
+    public function registerCommands()
+    {
+        
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                SetupAcl::class,
+            ]);
         }
     }
 }

@@ -58,7 +58,7 @@ class TeamsController extends Controller
             
         $team = Team::create($request->all());
         
-        return redirect()->route('teams.index')->with('success', "The team <strong>$team->name</strong> has successfully been created.");
+        return redirect()->route('teams.index')->with('success', __("acl::auth.Team <strong>:name</strong> has successfully been created.",['name'=>$team->name]));
     }
 
     public function show(Team $team)
@@ -76,9 +76,9 @@ class TeamsController extends Controller
                 'team' => $team
             ];
             return $this->view('teams.show')->with($params);
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+         } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -93,10 +93,10 @@ class TeamsController extends Controller
             
             
 
-            return redirect()->route('teams.show',[$team->id])->with('success', "The team <strong>$team->name</strong> has successfully been updated.");
-        } catch (ModelNotFoundException $ex) {
-            if ($ex instanceof ModelNotFoundException) {
-                return $this->view('errors.' . '404');
+            return redirect()->route('teams.show',[$team->id])->with('success', __("acl::auth.Team <strong>:name</strong> has successfully been updated.",['name'=>$team->name]));
+         } catch (ModelNotFoundException $exception) {
+            if ($exception instanceof ModelNotFoundException) {
+                return $this->view('ajtarragona-web-components::errors.' . '404',compact($exception));
             }
         }
     }
@@ -105,11 +105,12 @@ class TeamsController extends Controller
     public function destroy(Team $team)
     {
         try{
+            $teamname=$team->name;
             $team->delete();
 
-            return redirect()->route('teams.index')->with(['success'=>"The team <strong>$team->name</strong> has successfully been deleted"]); 
+            return redirect()->route('teams.index')->with('success', __("acl::auth.Team <strong>:name</strong> has successfully been deleted.",['name'=>$teamname])); 
         }catch(Exception $e){
-             return redirect()->route('teams.index')->with(['error'=>'Error borrando team']); 
+             return redirect()->route('teams.index')->with(['error'=>__('acl::auth.Error deleting team.')]); 
         }
     }
 

@@ -11,9 +11,9 @@
           <thead>
             <tr>
               <th>&nbsp;</th>
-              <th>@lang("username")</th>
-              <th>@lang("Name")</th>
-              <th>@lang("email")</th>
+              <th>@lang("acl::auth.Username")</th>
+              <th>@lang("acl::auth.Name")</th>
+              <th>@lang("acl::auth.Email")</th>
               
             </tr>
           </thead>
@@ -33,12 +33,12 @@
     <hr/>
     
     @button(['type'=>'submit','size'=>'sm','style'=>'secondary'])
-    	@icon('plus') @lang("auth.addselectedusers")
+    	@icon('plus') @lang("acl::auth.addselectedusers")
     @endbutton
 
     @endform
 @else
 	@card(['type'=>'info'])
-    @lang("auth.noresults")
+    @lang("acl::auth.noresults")
   @endcard
 @endif

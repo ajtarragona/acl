@@ -6,7 +6,7 @@
 
 @section('actions')
         <label for="user-form-submit-btn" role="button" class="btn btn-primary btn-sm" tabindex="0">
-          @icon('save') @lang('Save')
+          @icon('save') @lang('tgn::strings.save')
         </label>
 
        
@@ -14,7 +14,7 @@
             {{ csrf_field() }}
                 
                 <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-danger btn-sm" type="submit" > @icon('trash') @lang("Remove user")</button>
+                <button class="btn btn-danger btn-sm" type="submit" > @icon('trash') @lang("acl::auth.Remove user")</button>
         </form>
 
 @endsection

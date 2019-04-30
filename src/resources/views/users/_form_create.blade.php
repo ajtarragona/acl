@@ -11,19 +11,18 @@
     @include("acl::users._form_fields")
     @row(['class'=>'gap-sm'])
         @col(['size'=>6])
-            @input(['name'=>'password', 'type'=>'password', 'required'=>true, 'label'=>__('Password'),'value'=>$user->name]) 
+            @input(['name'=>'password', 'type'=>'password', 'required'=>true, 'label'=>__('acl::auth.Password'),'value'=>$user->name]) 
         @endcol
         @col(['size'=>6])
         
-            @input(['name'=>'password_confirmation', 'type'=>'password', 'required'=>true, 'label'=>__('Confirm Password'),
+            @input(['name'=>'password_confirmation', 'type'=>'password', 'required'=>true, 'label'=>__('acl::auth.Confirm Password'),
             'value'=>$user->name]) 
         @endcol
     @endrow
 
-    <hr/>
     
     @buttongroup
-        @button(['id'=>'user-form-submit-btn', 'hidden'=>false, 'type'=>'submit','value'=>'submit','name'=>'submitaction'])  @icon('save') @lang('Save') 
+        @button(['id'=>'user-form-submit-btn', 'hidden'=>true, 'type'=>'submit','value'=>'submit','name'=>'submitaction'])  @icon('save') @lang('tgn::strings.save') 
         @endbutton
         
         
