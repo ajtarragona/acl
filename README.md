@@ -1,6 +1,7 @@
 # Tarragona ACL for Laravel
 
-
+Aquest paquet incorpora una capa de Control d'Accés (Acces Control List) que permet definir, usuaris, rols, permisos i grups. 
+Utilitza internament el paquet [laratrust](https://laratrust.santigarcor.me/).
 
 
 ## acl
@@ -46,7 +47,8 @@ php artisan ajtarragona:acl-setup
 Això prepara les taules de laratrust
 executa la migració
 i crea els rols, permisos i usuaris per defecte
-
+Pots modificar els rols, permisos i usuaris a l'arxiu config/acl_seed.php
+php artisan vendor:publish --tag=ajtarragona-acl
 
 
 Configurar LDAP

@@ -263,19 +263,21 @@ class UsersController extends Controller
 
     }
     public function ldapaddusers(Request $request){
-        //dd($request->user_dn);
+        //dd($request->all());
         try{
             
             if($request->user_dn){
                 DB::beginTransaction();
                 foreach($request->user_dn as $user_dn){
                     $ldapuser=Adldap::search()->findByDn($user_dn);
+
                     $user = User::create([
                         'name' => $ldapuser->cn[0],
                         'username' => $ldapuser->samaccountname[0],
                         'email' => $ldapuser->mail[0],
                         'password' => bcrypt('password'), //fake password, ldap pwd will be used
                     ]);
+                    //dd($user);
 
                 }
                 DB::commit();
