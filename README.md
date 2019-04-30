@@ -75,44 +75,68 @@ php artisan vendor:publish --tag=ajtarragona-acl
 
 ## Configurar LDAP
 
-Add guard to config/auth.php
+A l'arxiu `config/auth.php`:
+1. Afegir el guard `ldaptgn`
+```php
 'guards' => [
+    ...
     'ldaptgn' => [
         'driver' => 'session',
         'provider' => 'ldap',
     ],
 ]
+```
 
-Set configurable default guard:
-'guard' => env('AUTH_GUARD','web'),
-
-
-Add to providers:
-'ldap' => [
+2. Fem que el default guard pugui configurar-se des de l'arxiu `.env`:
+```php
+'defaults' => [
+    'guard' => env('AUTH_GUARD','web'), //aquesta línea
+    ...
+],
+```
+3. Afegim el provider `ldap`:
+```php
+'providers' => [
+    ...
+    'ldap' => [
         'driver' => 'adldap', 
         'model' => Ajtarragona\ACL\Models\User::class,
     ],      
+]
+```
 
+Publiquem la configuració del paquet adldap:
+```bash
+php artisan vendor:publish --provider=Adldap\Laravel\AdldapAuthServiceProvider
+```
 
-publish adldap config
-modificar 'discover' => 'userprincipalname' a 'discover' => 'samaccountname',
-modificar 'eloquent' => 'email', por 'eloquent' => 'username',
-
-modificar 'sync_attributes' => [
-
+A l'arxiu `config/adldap_auth.php`:
+Modificar els següents atributs:
+```php
+'usernames' => [
+    'ldap' => [
+        'discover' => 'samaccountname',
+    ],
+    'eloquent' => 'username',
+    ...
+    'sync_attributes' => [
         'email' => 'mail',
         'username' => 'samaccountname',
-
         'name' => 'cn',
+    ]
+    ...
+]
+```
 
-    ],
-.env
+Congiurar les següents variables a l'arxiu `.env`
+```php
 AUTH_GUARD=ldaptgn
-ADLDAP_CONTROLLERS=vmad.ajtarragona.es
-ADLDAP_PORT=3268
-ADLDAP_BASEDN=dc=ajtarragona,dc=es
-ADLDAP_ADMIN_USERNAME=cn=ldap_php,cn=Users,dc=ajtarragona,dc=es
-ADLDAP_ADMIN_PASSWORD=6060Bce
-ADLDAP_USE_SSL=false
-ADLDAP_USE_TLS=false
 ADLDAP_LOGIN_FALLBACK = true
+ADLDAP_CONTROLLERS = ?
+ADLDAP_PORT = ?
+ADLDAP_BASEDN = ?
+ADLDAP_ADMIN_USERNAME = ?
+ADLDAP_ADMIN_PASSWORD = ?
+ADLDAP_USE_SSL = ?
+ADLDAP_USE_TLS = ?
+```
