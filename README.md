@@ -10,6 +10,11 @@ També s'inropora un backend d'administració d'aquesta capa ACL. Aquest backend
 composer require ajtarragona/acl
 ```
 
+Si volem fer servir el backend a més hem de requerir el paquet web-components.
+```bash
+composer require ajtarragona/web-components
+```
+
 
 ## Configuració Inicial
 
@@ -74,6 +79,9 @@ php artisan vendor:publish --tag=ajtarragona-acl
 ```
 
 ## Configurar LDAP
+El paquet incorpora internament el paquet [ADLdap Laravel](https://github.com/Adldap2/Adldap2-Laravel)
+tant per l'autenticació com per la incorporació d'usuaris de l'LDAP a l'aplicació.
+Els usuaris d'LDAP que es validin es donaràn d'alta automàticament. Des del backend també podem afegir usuaris buscant-los a l'LDAP.
 
 A l'arxiu `config/auth.php`:
 1. Afegir el guard `ldaptgn`
@@ -128,7 +136,7 @@ Modificar els següents atributs:
 ]
 ```
 
-Congiurar les següents variables a l'arxiu `.env`
+Configurar les següents variables a l'arxiu `.env`
 ```php
 AUTH_GUARD=ldaptgn
 ADLDAP_LOGIN_FALLBACK = true
