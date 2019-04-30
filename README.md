@@ -28,14 +28,15 @@ Publiquem la configuració de Laratrust.
 php artisan vendor:publish --tag="laratrust"
 ```
 
-A l'arxiu `config/laratrust.php`, posem l'atribut use_teams a true:
+A l'arxiu `config/laratrust.php`:
+1. posem l'atribut `use_teams` a `true`:
 ```php
  ...
  'use_teams' => true,
  ...
 ```
 
-Definim els models:
+2. Definim els models:
  ```php
  'user_models' => [
  	'users' => 'Ajtarragona\ACL\Models\User',
@@ -60,7 +61,7 @@ Definim els models:
  ],
 ```
 
-Finalment, executem la següent comanda:
+3. Finalment, executem la següent comanda:
 ```bash
 php artisan ajtarragona:acl-setup
 ```
