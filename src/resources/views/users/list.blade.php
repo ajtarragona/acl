@@ -15,8 +15,8 @@
 @section('breadcrumb')
   @breadcrumb([
       "items"=>[
-          ['name'=>__("acl::auth.authorizations"), "url"=>route('acl.dashboard')],
-          ['name'=>__("acl::auth.users")]
+          ['name'=>__("acl::auth.Auth admin"), "url"=>route('acl.dashboard')],
+          ['name'=>__("acl::auth.Users")]
       ]
 	 ])
 

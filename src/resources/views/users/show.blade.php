@@ -1,7 +1,7 @@
 @extends('ajtarragona-web-components::layout/master-sidebar') 
 
 
-@section('title', __('acl::auth.user :name',['name'=>$user->name]))
+@section('title', __('acl::auth.User :name',['name'=>$user->name]))
 
 
 @section('actions')
@@ -23,7 +23,7 @@
   @breadcrumb([
       "items"=>[
           ['name'=>__("acl::auth.authorizations"), "url"=>route('acl.dashboard')],
-          ['name'=>__("acl::auth.users"), "url"=>route('users.index')],
+          ['name'=>__("acl::auth.Users"), "url"=>route('users.index')],
           ['name'=>$user->name]
       ]
 	 ])

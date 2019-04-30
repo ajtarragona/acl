@@ -3,7 +3,7 @@
 		<thead>
 			<tr>
 				<th>@lang("acl::auth.Role")</th>
-				<th>@lang("acl::auth.Team")</th>
+				@if(config('laratrust.use_teams')) <th>@lang("acl::auth.Team")</th> @endif
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
@@ -11,7 +11,7 @@
 			@foreach($user->roles as $role)
 				<tr>
 					<td>{{$role->display_name}}</td>
-					<td>{{ $role->team()?$role->team()->display_name:'' }}</td>
+					@if(config('laratrust.use_teams')) <td>{{ $role->team()?$role->team()->display_name:'' }}</td> @endif
 					<td class="text-right">
 							@form([
 							    'method' => 'DELETE', 

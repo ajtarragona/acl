@@ -50,3 +50,45 @@ i crea els rols, permisos i usuaris per defecte
 
 
 Configurar LDAP
+
+Add guard to config/auth.php
+'guards' => [
+    'ldaptgn' => [
+        'driver' => 'session',
+        'provider' => 'ldap',
+    ],
+]
+
+Set configurable default guard:
+'guard' => env('AUTH_GUARD','web'),
+
+
+Add to providers:
+'ldap' => [
+        'driver' => 'adldap', 
+        'model' => Ajtarragona\ACL\Models\User::class,
+    ],      
+
+
+publish adldap config
+modificar 'discover' => 'userprincipalname' a 'discover' => 'samaccountname',
+modificar 'eloquent' => 'email', por 'eloquent' => 'username',
+
+modificar 'sync_attributes' => [
+
+        'email' => 'mail',
+        'username' => 'samaccountname',
+
+        'name' => 'cn',
+
+    ],
+.env
+AUTH_GUARD=ldaptgn
+ADLDAP_CONTROLLERS=vmad.ajtarragona.es
+ADLDAP_PORT=3268
+ADLDAP_BASEDN=dc=ajtarragona,dc=es
+ADLDAP_ADMIN_USERNAME=cn=ldap_php,cn=Users,dc=ajtarragona,dc=es
+ADLDAP_ADMIN_PASSWORD=6060Bce
+ADLDAP_USE_SSL=false
+ADLDAP_USE_TLS=false
+ADLDAP_LOGIN_FALLBACK = true
