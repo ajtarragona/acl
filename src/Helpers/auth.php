@@ -22,3 +22,10 @@ if (! function_exists('role')) {
 	}
 }
 
+if (! function_exists('currentteam')) {
+	function currentteam(){
+		return \Auth::user()->currentteam();	
+	}
+}
+
+

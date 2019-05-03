@@ -6,10 +6,16 @@
 
 if(config('acl.backend')){
     
-    $permission=config('acl.permission');
     $middlewares=['web','auth','language'];
-    $middlewares[]='permission:'.$permission;
 
+
+    Route::group(['prefix' => 'ajtarragona/acl','middleware' => $middlewares ], function () {
+        //set team
+        Route::get('/teams/set/{team_id}', 'Ajtarragona\ACL\Controllers\TeamsController@teamset')->name('teams.teamset');
+    });
+    
+    $permission=config('acl.permission');
+    $middlewares[]='permission:'.$permission;
 
     Route::group(['prefix' => 'ajtarragona/acl','middleware' => $middlewares ], function () {
 

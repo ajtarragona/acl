@@ -33,7 +33,7 @@ Publiquem la configuració de Laratrust.
 php artisan vendor:publish --tag="laratrust"
 ```
 
-A l'arxiu `config/laratrust.php`:
+A l'arxiu `config/laratrust.php` (si volem fer servir grups):
 1. posem l'atribut `use_teams` a `true`:
 ```php
  ...
@@ -155,6 +155,7 @@ ADLDAP_USE_TLS = ?
 Podem accedir al backend d'administració a través de la ruta `ajtarragona/acl`.
 Caldrà que introduim un usuari vàlid que tingui el permís de gestió d'autoritzacions.
 
+Es pot deshabilitar el backend configurant la variable `ACL_BACKEND` a l'arxiu `.env`.
 
 
 ## Ús

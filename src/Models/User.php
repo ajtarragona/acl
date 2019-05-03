@@ -155,8 +155,25 @@ class User extends Authenticatable
     }
     
 
-    public function userteams(){
+    public function userteams($formenu=false){
         $teams=$this->teams->unique();
+        if($teams && $formenu){
+            $ret=[];
+            $currentteam=currentteam();
+            if($currentteam){
+                foreach($teams as $team){
+                    //dump($currentteam->id==$team->id);
+                    $ret[]=[
+                        'title' => $team->display_name . (($currentteam->id==$team->id)?' ' .icon('check'):''),
+                        'url' => route('teams.teamset',[$team->id]),
+                        'active' => ($currentteam->id==$team->id)
+
+                    ];
+                    
+                }
+            }
+            return $ret;
+        }
         return $teams;
 
     }

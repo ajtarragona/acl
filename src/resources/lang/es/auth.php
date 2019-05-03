@@ -27,7 +27,7 @@
 	    "Team" =>"Grupo",
 	    "Teams" =>"Grupos",
 	    "teams" =>'{0} Ningún grupo|[1] :num Grupo|[2,*] :num Grupos', 
-	    "Change team" =>"Cambiar grupo de trabajo",
+	    "Change team" =>"Grupo de trabajo",
 	    "New team" =>"Nuevo grupo",
 	    "Remove team" =>"Borrar grupo",
 	    "Authorization" => "Autorización",

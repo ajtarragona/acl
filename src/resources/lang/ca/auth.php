@@ -27,7 +27,7 @@
 	    "Team" =>"Grup",
 	    "Teams" =>"Grups",
 	    "teams" =>'{0} Cap grup|[1] :num Grup|[2,*] :num Grups',
-	    "Change team" =>"Canviar grup de treball",
+	    "Change team" =>"Grup de treball",
 	    "New team" =>"Nou grup",
 	    "Remove team" =>"Esborrar grup",
 	    "Authorization" => "Autorització",

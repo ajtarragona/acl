@@ -121,8 +121,11 @@ class TeamsController extends Controller
         $team=Team::find($team_id);
         //dd($team);
         Team::setCurrent($team);
+        
+        return redirect()->back();
 
-        return redirect()->route('home');
+        //return redirect()->route('home');
     }
+
 }
 
