@@ -1,7 +1,7 @@
 @if(config("laratrust") && config('acl.backend') && can(config('acl.permission')))
 
 	@nav([
-		"navigation"=> 'collapse',
+		"navigation"=> 'dropdown',
 		'class'=>'nav-dark',
 		"items"=> [
 			[
@@ -37,7 +37,7 @@
 
 		],
 		'fullwidth'=>true
-	])
+	],['dropdown-vertical-direction' => 'top'])
 
 
 @endif

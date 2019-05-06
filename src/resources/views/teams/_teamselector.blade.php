@@ -3,7 +3,7 @@
 	@if($teams && $currentteam=currentteam()) 
 
 		@nav([
-			"navigation"=> 'collapse',
+			"navigation"=> 'dropdown',
 			'class'=>'nav-dark',
 			'id' => 'team-selector',
 			'fullwidth'=>true,
@@ -15,7 +15,7 @@
 					"children" => $teams
 				]
 			]
-		])
+		],['dropdown-vertical-direction' => 'top'])
 
 	@endif
 @endif

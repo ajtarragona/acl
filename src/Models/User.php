@@ -169,7 +169,7 @@ class User extends Authenticatable
                 foreach($teams as $team){
                     //dump($currentteam->id==$team->id);
                     $ret[]=[
-                        'title' => $team->display_name . (($currentteam->id==$team->id)?' ' .icon('check'):''),
+                        'title' => (($currentteam->id==$team->id)?icon('check').' ':'') . $team->display_name ,
                         'url' => route('teams.teamset',[$team->id]),
                         'active' => ($currentteam->id==$team->id)
 
