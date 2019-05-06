@@ -22,19 +22,24 @@ class BaseController extends Controller
         $permissions = Permission::all();
         $n_perms = $permissions->count();
         $n_logged = Auth::user()->name;
-        $teams = Team::all();
-        $n_teams = $teams->count();
+
         $data = [
             'n_users' => $n_users,
             'n_roles' => $n_roles,
             'n_perms' => $n_perms,
-            'n_teams' => $n_teams,
             'n_logged' => $n_logged,
             'roles' => $roles,
             'permissions' => $permissions,
-            'teams' => $teams,
 
         ];
+
+        if(config('laratrust.use_teams')) { 
+            $teams = Team::all();
+            $n_teams = $teams->count();
+
+            $data['teams'] = $teams;
+            $data['n_teams'] = $n_teams;
+        }
         
         return $this->view('dashboard',$data); 
 	}

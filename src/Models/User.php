@@ -144,6 +144,8 @@ class User extends Authenticatable
 
 
     public function teams(){
+        if(!config('laratrust.use_teams')) return false;
+    
         $teams = $this->morphToMany(
             \Config::get('laratrust.models.team'),
             'user',
@@ -152,10 +154,13 @@ class User extends Authenticatable
             \Config::get('laratrust.foreign_keys.team')
         );
         return $teams;
+    
     }
     
 
     public function userteams($formenu=false){
+        if(!config('laratrust.use_teams')) return false;
+    
         $teams=$this->teams->unique();
         if($teams && $formenu){
             $ret=[];
@@ -178,6 +183,8 @@ class User extends Authenticatable
 
     }
     public function currentteam(){
+        if(!config('laratrust.use_teams')) return false;
+    
         $teams=$this->teams;
         $ret=Team::current();
         //dd($ret);
