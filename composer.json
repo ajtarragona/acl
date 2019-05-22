@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "require": {
         "php" : ">=7.0.0",
-        "santigarcor/laratrust": "5.0.*",
+        "santigarcor/laratrust": "5.1.*",
         "adldap2/adldap2-laravel": "^4.0.7",
         "laravel/passport": "^7.1"
 
