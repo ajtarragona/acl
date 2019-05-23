@@ -4,10 +4,12 @@ namespace Ajtarragona\ACL\Models;
 
 use Laratrust\Models\LaratrustTeam;
 use Kyslik\ColumnSortable\Sortable;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 class Team extends LaratrustTeam
 {
     use Sortable;
+    use Cachable;
     
     public $sortable = [
        'name', 'display_name', 'description', 'id', 'created_at','updated_at'
