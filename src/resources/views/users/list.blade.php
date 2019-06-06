@@ -5,11 +5,14 @@
 
 
 @section('actions')
- <button class="btn @if($userfilter->hasFilters()) btn-outline-dark @else btn-light @endif btn-sm" type="button" data-toggle="collapse" data-target="#userfilters" aria-expanded="false" aria-controls="userfilters">@icon('filter') @lang("acl::auth.Filters")</button>
+  <button class="btn @if($userfilter->hasFilters()) btn-outline-dark @else btn-light @endif btn-sm" type="button" data-toggle="collapse" data-target="#userfilters" aria-expanded="false" aria-controls="userfilters">@icon('filter') @lang("acl::auth.Filters")</button>
 
-<a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.usermodal')}}">@icon("plus")  @lang("acl::auth.New user") </a>
+  <a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.usermodal')}}">@icon("plus")  @lang("acl::auth.New user") </a>
 
-<a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.ldapmodalform')}}">@icon("plus")  @lang("acl::auth.addfromldap") </a>
+  @if(config('auth.defaults.guard')=='ldaptgn')
+    <a class="btn btn-sm btn-light tgn-modal-opener"  data-size='lg' data-draggable='true' href="{{ route('users.ldapmodalform')}}">@icon("plus")  @lang("acl::auth.addfromldap") </a>
+  @endif
+
 @endsection
 
 @section('breadcrumb')
