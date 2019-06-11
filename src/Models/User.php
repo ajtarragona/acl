@@ -172,7 +172,7 @@ class User extends Authenticatable
                         'title' =>  $team->display_name ,
                         'url' => route('teams.teamset',[$team->id]),
                         'active' => ($currentteam->id==$team->id),
-                        'icon' => (($currentteam->id==$team->id)?icon('check').' ':false)
+                        'icon' => (($currentteam->id==$team->id)?'check-circle':'circle')
 
                     ];
                     
