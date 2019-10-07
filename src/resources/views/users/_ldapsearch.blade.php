@@ -20,7 +20,7 @@
           <tbody>
               @foreach($users as $user)
                   <tr>
-                    <td>@checkbox(['renderhelper'=>false,'name'=>'user_dn[]','value'=>$user->distinguishedname[0]]) {{-- {{ $user->distinguishedname[0] }} --}} </td>
+                    <td>@checkbox(['renderhelper'=>false,'class'=>'row-selector','name'=>'user_dn[]','value'=>$user->distinguishedname[0]]) {{-- {{ $user->distinguishedname[0] }} --}} </td>
                     <td>{{$user->samaccountname[0] }}</td>
                     <td>{{$user->cn[0] }}</td>
                     <td>{{$user->mail[0] }}</td>
