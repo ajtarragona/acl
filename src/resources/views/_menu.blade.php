@@ -1,5 +1,5 @@
 @if(config("laratrust") && config('acl.backend') && can(config('acl.permission')))
-
+	{{-- @dump(config("laratrust.use_teams")) --}}
 	@nav([
 		"navigation"=> 'dropdown',
 		'class'=>'nav-dark',
