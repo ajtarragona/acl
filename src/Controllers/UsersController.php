@@ -276,6 +276,7 @@ class UsersController extends Controller
                         'name' => $ldapuser->cn[0],
                         'username' => $ldapuser->samaccountname[0],
                         'email' => $ldapuser->mail[0],
+                        'objectguid' => $ldapuser->getConvertedGuid(),
                         'password' => bcrypt('password'), //fake password, ldap pwd will be used
                     ]);
                     //dd($user);
