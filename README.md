@@ -32,6 +32,11 @@ Si fem servir LDAP, també canviar el model a l'arxiu `config/ldap_auth.php`
 ```php
 'model' => Ajtarragona\ACL\Models\User::class,
 ```
+Si no trobem l'arxiu, cal publicar-lo amb la comanda:
+```bash
+php artisan vendor:publish --provider=Adldap\Laravel\AdldapAuthServiceProvider
+```
+
 
 Publiquem la configuració de Laratrust.
 ```bash
