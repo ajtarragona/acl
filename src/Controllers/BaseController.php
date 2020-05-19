@@ -2,7 +2,8 @@
 
 namespace Ajtarragona\ACL\Controllers; 
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
+
 use Illuminate\Http\Request;
 use Ajtarragona\ACL\Models\User;
 use Ajtarragona\ACL\Models\Role;
