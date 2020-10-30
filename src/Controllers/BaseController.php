@@ -34,7 +34,7 @@ class BaseController extends Controller
 
         ];
 
-        if(config('laratrust.use_teams')) { 
+        if(config('laratrust.teams.enabled')) { 
             $teams = Team::all();
             $n_teams = $teams->count();
 

@@ -44,10 +44,12 @@ php artisan vendor:publish --tag="laratrust"
 ```
 
 A l'arxiu `config/laratrust.php` (si volem fer servir grups):
-1. posem l'atribut `use_teams` a `true`:
+1. posem l'atribut `teams.enabled` a `true`:
 ```php
  ...
- 'use_teams' => true,
+ 'teams' => [
+    'enabled' => true,
+ ]
  ...
 ```
 

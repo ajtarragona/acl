@@ -67,7 +67,7 @@
 
         @endcol
 
-        @if(config('laratrust.use_teams'))
+        @if(config('laratrust.teams.enabled'))
           @col(['size'=>3])
 
               @card(['title'=> icon('briefcase'). ' '.trans_choice("acl::auth.teams",$n_teams,['num'=>$n_teams]),'type'=>'success'])

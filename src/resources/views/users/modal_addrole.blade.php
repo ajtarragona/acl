@@ -29,7 +29,7 @@
     		'data'=>['width'=>'100%']
     	]) 
 
-        @if(config('laratrust.use_teams'))
+        @if(config('laratrust.teams.enabled'))
         	@select([
         		'icon'=>'briefcase',
         		'name'=>'team_id', 

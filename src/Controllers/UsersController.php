@@ -177,7 +177,7 @@ class UsersController extends Controller
          $user=User::find($user_id);
          $roles = Role::getAllCombo();
          $teams=null;
-         if(config('laratrust.use_teams')) $teams=Team::getAllCombo();
+         if(config('laratrust.teams.enabled')) $teams=Team::getAllCombo();
 
          return $this->view('users.modal_addrole',compact('user','roles','teams'));
     }
@@ -190,7 +190,7 @@ class UsersController extends Controller
         try{
             $role=Role::find($request->role_id);
 
-            if(config('laratrust.use_teams') && isset($request->team_id)){
+            if(config('laratrust.teams.enabled') && isset($request->team_id)){
                
                 $team=Team::find($request->team_id);
                 $user->attachRole($role, $team); 
@@ -213,7 +213,7 @@ class UsersController extends Controller
         $user=User::find($user_id);
         try{
             $role=Role::find($request->role_id);
-            if(config('laratrust.use_teams') && isset($request->team_id)){
+            if(config('laratrust.teams.enabled') && isset($request->team_id)){
                 $team=Team::find($request->team_id);
                 $user->detachRole($role, $team); 
             }else{

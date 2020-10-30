@@ -1,4 +1,4 @@
-@if(config("laratrust.use_teams") && config("acl.team_selector") && Auth::user() && $teams=Auth::user()->userteams(true))
+@if(config("laratrust.teams.enabled") && config("acl.team_selector") && Auth::user() && $teams=Auth::user()->userteams(true))
 	{{-- @dump($currentteam) --}}
 	@if($teams && $currentteam=currentteam()) 
 

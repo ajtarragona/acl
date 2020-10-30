@@ -1,5 +1,5 @@
 @if(config("laratrust") && config('acl.backend') && can(config('acl.permission')))
-	{{-- @dump(config("laratrust.use_teams")) --}}
+	{{-- @dump(config("laratrust.teams.enabled")) --}}
 	@nav([
 		"navigation"=> 'dropdown',
 		'class'=>'nav-dark',
@@ -28,7 +28,7 @@
 						"title" => __('acl::auth.Teams') ,
 						"route" => 'teams.index',
 						"icon" => 'briefcase',
-						"visible" => config("laratrust.use_teams")
+						"visible" => config("laratrust.teams.enabled")
 
 					]
 					
