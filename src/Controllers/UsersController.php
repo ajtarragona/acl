@@ -176,10 +176,12 @@ class UsersController extends Controller
     public function addrolemodal($user_id){
          $user=User::find($user_id);
          $roles = Role::getAllCombo();
+         $user_roles=$user->roles->map(function($role){ return $role->id; })->toArray();
+        //  dd($user_roles);
          $teams=null;
          if(config('laratrust.teams.enabled')) $teams=Team::getAllCombo();
 
-         return $this->view('users.modal_addrole',compact('user','roles','teams'));
+         return $this->view('users.modal_addrole',compact('user','roles','teams','user_roles'));
     }
 
 
@@ -191,28 +193,27 @@ class UsersController extends Controller
             // dd($request->role_id);
            
             if(config('laratrust.teams.enabled') && isset($request->team_id)){
-                $role=Role::find($request->role_id);
+                // $role=Role::find($request->role_id);
 
                 $team=Team::find($request->team_id);
-                $user->attachRole($role, $team); 
+                $user->attachRole($request->role_id, $team); 
 
             }else{
-                if(is_array($request->role_id)){
-                    foreach($request->role_id as $role_id){
-                        $role=Role::find($role_id);
-                        $user->attachRole($role); 
-                    }
-                }else{
-                    $role=Role::find($request->role_id);
-
-                    $user->attachRole($role); 
+                
+                $roles=[];
+                if($request->role_id){
+                    $roles=is_array($request->role_id) ? $request->role_id : [$request->role_id];
                 }
+                $user->syncRoles($roles);
+                
+               
 
             }
 
-            return redirect()->route('users.show',[$user_id])->with(['success'=>__("acl::auth.Role <strong>:name</strong> added successfully.",["name"=>$role->name]) ]); 
+            return redirect()->route('users.show',[$user_id])->with(['success'=>__("acl::auth.Role/s added successfully.") ]); 
             
         }catch(Exception $e){
+            // dd($e);
              return redirect()->route('users.show',[$user_id])->with(['error'=>__('acl::auth.Error adding role.')]); 
         }
         //dd($request->all());

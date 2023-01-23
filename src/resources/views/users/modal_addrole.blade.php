@@ -6,7 +6,7 @@
 
 
 @section('footer')
-<label for="add-role-btn" class="btn btn-sm btn-primary" role="button" tabindex="0"> @icon('plus') @lang('acl::auth.Add role') </label>
+<label for="add-role-btn" class="btn btn-sm btn-primary" role="button" tabindex="0"> @icon('save') @lang('acl::auth.Save roles') </label>
 @endsection
 @section('body')
 	
@@ -46,6 +46,7 @@
 				'name'=>'role_id', 
 				'label'=>__('acl::auth.Role'),
 				'options'=>$roles,
+				'selected'=>$user_roles,
 				'multiple'=>true,
 				'required'=>true,
 				'data'=>['width'=>'100%']
