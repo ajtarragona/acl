@@ -188,15 +188,26 @@ class UsersController extends Controller
         $user=User::find($user_id);
 
         try{
-            $role=Role::find($request->role_id);
-
+            // dd($request->role_id);
+           
             if(config('laratrust.teams.enabled') && isset($request->team_id)){
-               
+                $role=Role::find($request->role_id);
+
                 $team=Team::find($request->team_id);
                 $user->attachRole($role, $team); 
 
             }else{
-                $user->attachRole($role); 
+                if(is_array($request->role_id)){
+                    foreach($request->role_id as $role_id){
+                        $role=Role::find($role_id);
+                        $user->attachRole($role); 
+                    }
+                }else{
+                    $role=Role::find($request->role_id);
+
+                    $user->attachRole($role); 
+                }
+
             }
 
             return redirect()->route('users.show',[$user_id])->with(['success'=>__("acl::auth.Role <strong>:name</strong> added successfully.",["name"=>$role->name]) ]); 

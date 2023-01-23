@@ -17,6 +17,8 @@
 	    "New role" =>"Nuevo rol",
 	    "Add role to user" =>"Añadir rol a usuario",
 	    "Add role" =>"Añadir rol",
+	    "Define roles" =>"Definir rols",
+	    "Add roles" =>"Afegir rols",
 	    "Remove role" =>"Esborrar rol",
 	    "Permission" =>"Permiso",
 	    "Permissions" =>"Permisos",

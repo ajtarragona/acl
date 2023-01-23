@@ -19,17 +19,18 @@
 
 
 	
-    	@select([
-    		'icon'=>'lock',
-    		'name'=>'role_id', 
-    		'label'=>__('acl::auth.Role'),
-    		'options'=>$roles,
-    		'multiple'=>false,
-    		'required'=>true,
-    		'data'=>['width'=>'100%']
-    	]) 
-
+    	
         @if(config('laratrust.teams.enabled'))
+			@select([
+				'icon'=>'lock',
+				'name'=>'role_id', 
+				'label'=>__('acl::auth.Role'),
+				'options'=>$roles,
+				'multiple'=>false,
+				'required'=>true,
+				'data'=>['width'=>'100%']
+			]) 
+
         	@select([
         		'icon'=>'briefcase',
         		'name'=>'team_id', 
@@ -39,10 +40,20 @@
         		'required'=>false,
         		'data'=>['width'=>'100%']
         	]) 
+        @else
+			@select([
+				'icon'=>'lock',
+				'name'=>'role_id', 
+				'label'=>__('acl::auth.Role'),
+				'options'=>$roles,
+				'multiple'=>true,
+				'required'=>true,
+				'data'=>['width'=>'100%']
+			]) 
         @endif
 	
 
-        @button(['hidden'=>true,'id'=>'add-role-btn', 'type'=>'submit','value'=>'submit','name'=>'submitaction','style'=>'secondary','size'=>'sm'])  @icon('plus') @lang('acl::auth.Add role') 
+        @button(['hidden'=>true,'id'=>'add-role-btn', 'type'=>'submit','value'=>'submit','name'=>'submitaction','style'=>'secondary','size'=>'sm'])  @icon('plus') @lang('acl::auth.Add roles') 
         @endbutton
         
 	@endform

@@ -30,7 +30,7 @@
 		</tbody>
 	</table>
 	@modalopener(['href'=>route('users.addrolemodal',[$user->id]),'class'=>'btn btn-sm btn-light '])
-		@icon('plus') @lang("acl::auth.New role")
+		@icon('plus') @lang("acl::auth.Define roles")
 	@endmodalopener
 	
 @endif
