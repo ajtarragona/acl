@@ -5,6 +5,8 @@ Utilitza internament el paquet [Laratrust](https://laratrust.santigarcor.me/).
 
 També s'inropora un backend d'administració d'aquesta capa ACL. Aquest backend depèn del paquet [ajtarragona/web-components](https://github.com/ajtarragona/web-components) per funcionar correctament.
 
+[![Latest Stable Version](http://poser.pugx.org/ajtarragona/acl/v)](https://packagist.org/packages/ajtarragona/acl) [![Total Downloads](http://poser.pugx.org/ajtarragona/acl/downloads)](https://packagist.org/packages/ajtarragona/acl) [![Latest Unstable Version](http://poser.pugx.org/ajtarragona/acl/v/unstable)](https://packagist.org/packages/ajtarragona/acl) [![License](http://poser.pugx.org/ajtarragona/acl/license)](https://packagist.org/packages/ajtarragona/acl) [![PHP Version Require](http://poser.pugx.org/ajtarragona/acl/require/php)](https://packagist.org/packages/ajtarragona/acl)
+
 ## Instal·lació
 ```bash
 composer require ajtarragona/acl
